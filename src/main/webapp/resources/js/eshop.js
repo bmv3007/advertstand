@@ -1,8 +1,62 @@
-function newMyWindow(e) {
+
+
+
+/*$(window).load(function(){
+	console.log("window");
+    loadGoods();
+});*/
+
+$('document').ready(function(){
+    console.log("document");
+    loadGoods();
+
+});
+
+
+function loadGoods() {
+    $.ajax({
+        url : 'getjson',
+        dataType: 'json',
+        success : function(data) {
+
+            var out = '';
+            for (var key in data){
+                // var vegetarian = (data[key]['vegetarian'] > 0) ? 'No' : 'Yes';
+                // out+='<div>';
+                // out+='<div class="thumbnail">';
+                out+='<img src="http://localhost:7777/intbuffetproject/getBigImage?id='+data[key]['id']+'" class="img-responsive">';
+               /* out+='<div class="caption">';
+                out+='<h3>';
+                out+='<a href="#">'+data[key]['name']+'</a>';
+                out+='</h3>';
+                out+='<p>Category: '+data[key]['category']['name']+'</p>';//????
+                out+='<p>'+data[key]['description']+'</p>';
+                out+='<p> Price: '+data[key]['price']+'</p>';
+                out+='<p> Vegetarian: '+vegetarian+'</p>';
+                out+='<p> Weight: '+data[key]['weight']+'</p>';
+                out+='</div>';*/
+               /* out+='</div>';
+                out+='</div>';*/
+
+
+            }
+
+          console.log(out);
+            localStorage.setItem("cart", JSON.stringify(data));
+            $('#goods').html(out);
+
+        }
+
+    });
+}
+
+
+
+/*function newMyWindow(e) {
   var h = 500;
   var w = 500;
   myWindow = window.open(e, '', 'scrollbars=1,height='+Math.min(h, screen.availHeight)+',width='+Math.min(w, screen.availWidth)+',left='+Math.max(0, (screen.availWidth - w)/2)+',top='+Math.max(0, (screen.availHeight - h)/2));
-  }
+  }*/
 
 
 
@@ -23,20 +77,6 @@ function addAjax(articul,price,quantity) {
 	return false;
 }
 
-function deleteAjax(articul,price,quantity) {
-	$.ajax({
-		type: "GET",
-		url : 'delete_from_cart',
-		data : ({idgood: articul}),
-		success : function(data) {
-			$('#total_price').html('&#8364; '+ data[0]);
-			$('input[cartAttr="'+articul+'"]').val(data[1]);
-			}
-
-});  
-	
-	return false;
-}
 
 
 function find() {
@@ -97,14 +137,6 @@ function changeHrefOrder(id) {
 	
 }
 
-function repeatOrder(id) {
-	
-	var href="repeatOrder/"+id;
-		
-	$('a[refattr="'+id+'"]').attr("href",href);
-	
-}
-
 function showProfit(){
 	
 	var from =  $('input[dateAttr="from"]').val();
@@ -127,39 +159,5 @@ function showProfit(){
 }
 
 
-
-
-function uploadFile(){
-	    var $that = $(this),
-	    formData = new FormData($('#file').get(0));
-
-	
-	 
-     
-	
-	 console.log(formData);
-	
-$.ajax({
-	url : 'uploadFile1',
-    type: 'POST',
-    data: formData,
-    cache: false,
-    dataType: 'json',
-    processData: false, // Не обрабатываем файлы (Don't process the files)
-    contentType: false, // Так jQuery скажет серверу что это строковой запрос
-    success: function( data ){
-
-        
-
-            // выведем пути к загруженным файлам в блок '.ajax-respond'
-
-            var files_path = data.files;
-            var html = '';
-            $.each( files_path, function( key, val ){ html += val +'<br>'; } )
-            $('.ajax-respond').html( html );
-    }
-   
-});
-}
 
 

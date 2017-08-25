@@ -61,11 +61,7 @@ public class GetMessage {
                     listOfProducts.loadListOfProducts();
 
                     //***************************
-                    try {
-                        System.out.println(msg);
-                    } catch (Exception e) {
 
-                    }
                 }
             };
 
