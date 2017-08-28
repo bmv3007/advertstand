@@ -6,7 +6,9 @@ import service.ws.ProductWSClient;
 import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import java.util.List;
 
@@ -14,8 +16,7 @@ import java.util.List;
  * Created by Maria on 19.08.2017.
  */
 @ManagedBean(name = "products")
-@SessionScoped
-@Singleton
+@RequestScoped
 public class ListOfProducts {
 
     @Inject

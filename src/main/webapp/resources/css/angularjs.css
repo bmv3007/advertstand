@@ -1,0 +1,31 @@
+.img-wrap {
+  background: #f8f8f8;
+  height: 200px;
+  margin: 0 auto 20px;
+  padding: 10px;
+  width: 200px;
+}
+
+.big-img {
+  max-height: 180px;
+  max-width: 180px;
+}
+
+.img-thumbnails {
+  margin: 0 auto 10px;
+  width: 200px;
+  padding-left: 0;
+}
+.img-thumbnails .thumbnail {
+  /*background: #f8f8f8;*/
+  border: 0;
+  margin-right: 15px;
+  /*margin-left: 20px;*/
+  /*min-height: 50px;*/
+}
+
+
+li.small-image {
+  width: 50px;
+}
+

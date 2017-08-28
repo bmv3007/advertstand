@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="mobileStore">
+  <head>
+    <link rel="stylesheet" type="text/css" href="resources/libs/bootstrap-3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="resources/css/angularjs.css"/>
+    <script type="text/javascript" src="resources/libs/angular-1.4.7/angular.min.js"></script>
+    <script type="text/javascript" src="resources/js/app.js"></script>
+
+<body ng-controller="StoreController as store">
+  <header>
+    <h1 class = "text-center">Mobile store {{4+10}}</h1>
+  </header>
+
+  <div class="list-group">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="list-group-item" ng-repeat="product in store.products">
+        <h3>{{product.name}} <em class="pull-right">
+          {{product.price | currency}}</em> </h3>
+
+        <div >
+          <div class="img-wrap">
+            <img class="big-img" ng-src="http://localhost:7777/intbuffetproject/getBigImage?id={{product.id}}">
+
+          </div>
+
+        </div>
+
+
+       <!-- <img ng-src="http://localhost:7777/intbuffetproject/getBigImage?id={{product.id}}"> -->
+
+     <product-gallery></product-gallery>
+      </div>
+    </div>
+  </div>
+  </body>
+</html>
